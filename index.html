@@ -1,79 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flow</title>
-    <link rel="icon" type="image/png" href="smile.png">
-    <meta content="Flow" property="og:title" />
-    <meta content="The Most Advanced Roblox Executor" property="og:description" />
-    <meta content="2e43a5b.png" property="og:image" />
-    <meta content="#4d9fff" data-react-helmet="true" name="theme-color" />
-    <meta name="twitter:card" content="summary_large_image">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Fira+Code:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
+    <title>Flow | Next Gen</title>
     
     <style>
-        /* UI Improvements & Fix for "Moving Text" on hover */
-        .nav-brand .brand-logo { display: none; } /* Removes icon near Flow text */
-        
+        /* --- UI IMPROVEMENTS --- */
+        :root {
+            --primary: #4d9fff;
+            --bg-dark: #0a0a0c;
+            --card-bg: rgba(255, 255, 255, 0.03);
+        }
+
+        /* 1. Shift Flow text to the left */
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            padding-left: 0; /* Ensures it stays to the far left */
+            margin-left: -10px; 
+        }
+
+        .brand-logo { display: none !important; } /* Removes icon */
+
+        .brand-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            background: linear-gradient(90deg, #fff, var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* 2. Fix Button Text Shifting */
         .btn-primary {
             position: relative;
+            background: var(--primary);
+            color: white;
+            border: 2px solid transparent; /* Invisible border to "reserve" space */
+            padding: 12px 28px;
+            border-radius: 12px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             display: inline-flex;
             align-items: center;
-            justify-content: center;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-            border: none; /* Prevents layout shift from borders */
-            overflow: hidden;
+            gap: 10px;
+            outline: none;
+            /* Critical: Prevents layout shift */
+            box-sizing: border-box; 
+            line-height: 1; 
         }
 
         .btn-primary:hover {
-            transform: translateY(-2px); /* Slight lift instead of text shifting */
-            box-shadow: 0 5px 15px rgba(77, 159, 255, 0.4);
+            transform: translateY(-3px);
+            /* Use box-shadow instead of border to prevent text movement */
+            box-shadow: 0 10px 20px rgba(77, 159, 255, 0.3);
+            background: #5baaff;
         }
 
-        /* Ensure text inside doesn't move */
-        .btn-primary span {
-            pointer-events: none; 
+        /* 3. Improved FAQ Interactivity */
+        .faq-item {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            margin-bottom: 15px;
+            transition: 0.3s;
         }
 
-        /* Cleaner Section Headers */
-        .section-header h2 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            letter-spacing: -1px;
+        .faq-item:hover {
+            border-color: var(--primary);
+            background: rgba(77, 159, 255, 0.02);
+        }
+
+        /* 4. Hero Visual Glassmorphism */
+        .code-preview {
+            background: rgba(13, 13, 15, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        /* 5. Stat Card Polish */
+        .stat-card {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            text-align: center;
         }
     </style>
 </head>
 <body>
-    <div class="background-effects">
-        <div class="grid-lines"></div>
-        <div class="glow-orbs">
-            <div class="orb orb-1"></div>
-            <div class="orb orb-2"></div>
-            <div class="orb orb-3"></div>
-        </div>
-    </div>
 
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-brand">
                 <span class="brand-text">Flow</span>
             </div>
+            
             <div class="nav-menu">
-                <a href="index.html#features" class="nav-item">
-                    <i class="fas fa-bolt"></i>
-                    <span>Features</span>
-                </a>
-                <a href="index.html#showcase" class="nav-item">
-                    <i class="fas fa-tv"></i>
-                    <span>Showcase</span>
-                </a>
-                <a href="index.html#faq" class="nav-item">
-                    <i class="fas fa-circle-question"></i>
-                    <span>FAQ</span>
-                </a>
+                <a href="#features" class="nav-item">Features</a>
+                <a href="#showcase" class="nav-item">Showcase</a>
+                <a href="#faq" class="nav-item">FAQ</a>
             </div>
         </div>
     </nav>
@@ -82,34 +113,34 @@
         <div class="hero-container">
             <div class="hero-content">
                 <div class="hero-badge">
-                    <div class="badge-glow"></div>
-                    <span class="badge-text">Best external executor • 2 Versions Available</span>
+                    <span class="badge-text">✨ The most stable external executor</span>
                 </div>
+                
                 <h1 class="hero-title">
                     Next Generation
                     <div class="gradient-text">Script Execution</div>
                 </h1>
+
                 <p class="hero-description">
-                    Experience unmatched power and precision with Free cutting-edge Roblox executor.
-                    Instant execution, unlimited possibilities.
+                    Unleash the full potential of your gameplay with <b>Flow</b>. 
+                    Our engine is optimized for zero latency and 100% uptime.
                 </p>
+
                 <div class="hero-actions">
                     <button onclick="window.location.href='https://gofile.io/d/xXJJvy';" class="btn-primary">
-                        <span>Download</span>
-                        <i class="fas fa-arrow-right" style="margin-left: 10px;"></i>
-                        <div class="btn-glow"></div>
+                        <span>Download Now</span>
+                        <i class="fas fa-download"></i>
                     </button>
                     </div>
+
                 <div class="hero-stats">
                     <div class="stat-card">
-                        <i class="fas fa-bolt stat-icon"></i>
-                        <div class="stat-value">0ms</div>
-                        <div class="stat-label">Execution Time</div>
+                        <div class="stat-value">100%</div>
+                        <div class="stat-label">UNC Support</div>
                     </div>
                     <div class="stat-card">
-                        <i class="fas fa-shield-halved stat-icon"></i>
-                        <div class="stat-value">Secure</div>
-                        <div class="stat-label">Bypass Verified</div>
+                        <div class="stat-value">Level 7</div>
+                        <div class="stat-label">Access Power</div>
                     </div>
                 </div>
             </div>
@@ -118,31 +149,20 @@
                 <div class="code-preview">
                     <div class="preview-header">
                         <div class="window-controls">
-                            <span></span><span></span><span></span>
-                        </div>
-                        <div class="preview-tabs">
-                            <div class="tab active">main.lua</div>
+                            <span style="background: #ff5f56"></span>
+                            <span style="background: #ffbd2e"></span>
+                            <span style="background: #27c93f"></span>
                         </div>
                     </div>
                     <div class="preview-editor">
-                        <div class="line-numbers">
-                            <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span>
-                        </div>
-                        <pre class="code-content"><code>-- Initialize Exploit
-local script = require("bypass")
-
-executor.config({
-    bypass = "hyperion"
-})
-
-local success = lua:execute(script)</code></pre>
+                        <pre class="code-content"><code><span style="color: #888">-- Auto-executing...</span>
+print(<span style="color: #98c379">"Flow Initialized"</span>)
+loadstring(game:HttpGet(<span style="color: #d19a66">"..."</span>))()</code></pre>
                     </div>
-                    <div class="preview-glow"></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <script src="script.js"></script>
 </body>
 </html>
